@@ -1,21 +1,7 @@
 library(magick)
 #https://www.rostrum.blog/2018/11/25/art-of-the-possible/
 
-#img <-image_read("images/example01.png")
-#img <- image_background(img, "#ffffff", flatten = TRUE)
-
-
-cols_vec <- setNames(
-  c("#000000", "#0000ff", "#008000", "#ff0000", "#ffffff", "#ffff00"),
-  c("black", "blue", "green", "red", "white", "yellow")
-)
-
-#cols_vec <- setNames(
-#  c("#221a0f", "#828c2c", "#ffffff", "#eccd58"),
-#  c("brown",   "green",   "white",   "yellow")
-#)
-
-ccc <- c(w ="#ffffff",
+bcol <- c(w ="#ffffff",
   g1="#576a26",
   g2="#919e39",
   yg="#b1ab3e",
@@ -25,7 +11,7 @@ ccc <- c(w ="#ffffff",
   b1="#966521",
   b2="#5c361f",
   b3="#261d19")
-cols_vec <- setNames(ccc, names(ccc))
+cols_vec <- setNames(bcol, names(bcol))
 
 for (i in seq_along(cols_vec)) {
   fig_name <- paste0(names(cols_vec)[i], "_square")  # create object name
@@ -51,27 +37,51 @@ simple_cols <- image_append(c(
   get(col_square[7]), get(col_square[8]), get(col_square[9]),
   get(col_square[10])
 ))
+
+## this is what we use as map
 simple_cols
-
-img <-image_read("images/example00.png")
-
-ii <- image_map(img, simple_cols)
-
-image_animate(c(img, ii), fps = 1)
-
-## see other part of script for quantifying colors
 
 
 
 ## all images
-ii <- list.files("images")
-d <- data.frame(do.call(rbind, strsplit(gsub("\\.png", "", ii), "_")))
-dimnames(d) <- list(ii, c("fruit", "group", "day"))
+bi <- list.files("images")
+d <- data.frame(do.call(rbind, strsplit(gsub("\\.png", "", bi), "_")))
+dimnames(d) <- list(bi, c("fruit", "group", "day"))
 d$day <- as.Date(d$day)
-d$day2 <- d$day %in% as.Date(c("2020-05-28", "2020-05-30", "2020-06-01",
-                       "2020-06-03", "2020-06-05", "2020-06-07",
-                       "2020-06-09", "2020-06-11", "2020-06-13",
-                       "2020-06-15", "2020-06-17"))
+d$training <- d$fruit != "26" & d$day %in% as.Date(c(
+    "2020-05-28", "2020-05-30", "2020-06-01",
+    "2020-06-03", "2020-06-05", "2020-06-07",
+    "2020-06-09", "2020-06-11", "2020-06-13",
+    "2020-06-15", "2020-06-17"))
+
+count_colors <- function(image) {
+  data <- image_data(image) %>%
+    apply(2:3, paste, collapse = "") %>%
+    as.vector %>% table() %>%  as.data.frame() %>%
+    setNames(c("hex", "freq"))
+  data$hex <- paste("#", data$hex, sep="")
+  return(data)
+}
+
+pcolor <- function(f, size="300x200") {
+  tmp <- image_read(f) %>%
+    image_resize(size) %>%
+    image_map(simple_cols) %>%
+    count_colors()
+  p <- structure(tmp$freq / sum(tmp$freq),
+    names=names(bcol)[match(tmp$hex, paste0(bcol, "ff"))])
+  out <- numeric(length(bcol))
+  names(out) <- names(bcol)
+  out[names(p)] <- p
+  out
+}
+
+M <- t(pbapply::pbsapply(file.path("images", bi), pcolor))
+
+
+
+
+with(d, table(day, fruit, training))
 ## establish colors
 i <- c("22_B_2020-05-28.png", "22_B_2020-05-30.png", "22_B_2020-06-01.png",
   "22_B_2020-06-07.png", "22_B_2020-06-13.png", "22_B_2020-06-17.png")
@@ -92,14 +102,6 @@ vv <- image_map(img, simple_cols)
 
 
 
-count_colors <- function(image) {
-  data <- image_data(image) %>%
-    apply(2:3, paste, collapse = "") %>%
-    as.vector %>% table() %>%  as.data.frame() %>%
-    setNames(c("hex", "freq"))
-  data$hex <- paste("#", data$hex, sep="")
-  return(data)
-}
 
 z <- count_colors(vv)
 z$prop <- z$freq / sum(z$freq)
@@ -133,3 +135,6 @@ matplot(z, lty=1,type="l", col=ccc[c(3,6,8)], lwd=3)
 
 z2 <- t(apply(z, 1, cumsum))
 matplot(z2, lty=1,type="l", col=ccc[c(3,6,8)], lwd=3)
+
+
+
