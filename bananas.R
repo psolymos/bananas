@@ -46,13 +46,16 @@ simple_cols
 ## all images
 bi <- list.files("images")
 d <- data.frame(do.call(rbind, strsplit(gsub("\\.png", "", bi), "_")))
-dimnames(d) <- list(bi, c("fruit", "group", "day"))
-d$day <- as.Date(d$day)
-d$training <- d$fruit != "26" & d$day %in% as.Date(c(
+dimnames(d) <- list(bi, c("fruit", "group", "date"))
+d$date <- as.Date(d$date)
+
+d$training <- d$fruit != "26" & d$date %in% as.Date(c(
     "2020-05-28", "2020-05-30", "2020-06-01",
     "2020-06-03", "2020-06-05", "2020-06-07",
     "2020-06-09", "2020-06-11", "2020-06-13",
     "2020-06-15", "2020-06-17"))
+d$day <- as.integer(d$date - min(d$date))
+d$file <- rownames(d)
 
 count_colors <- function(image) {
   data <- image_data(image) %>%
@@ -77,8 +80,9 @@ pcolor <- function(f, size="300x200") {
 }
 
 M <- t(pbapply::pbsapply(file.path("images", bi), pcolor))
+M <- data.frame(d, M)
 
-
+write.csv(M, row.names=FALSE, file="data-colors.csv")
 
 
 with(d, table(day, fruit, training))
