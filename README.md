@@ -12,7 +12,7 @@ install.packages("bananas", repos = "https://psolymos.r-universe.dev")
 remotes::install_github("psolymos/bananas")
 ```
 
-A sequence of images were taken of 11 bana fruits over 21 days:
+A sequence of images were taken of 11 banana fruits over 21 days:
 
 ![](26_B.gif)
 
