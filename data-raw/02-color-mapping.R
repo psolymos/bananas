@@ -27,7 +27,24 @@ count_colors <- function(image) {
 }
 #' This function returns a vector of values that sum to 1
 #' and the names match `bcol`.
-#' Original image sizes (w x h): 1488 x 1141
+#'
+#' Full resolution (w x h): 1488 x 1141
+pcolor_full <- function(f) {
+  tmp <- image_read(f) %>%
+    image_map(bananas_pal) %>%
+    count_colors()
+  p <- structure(tmp$freq / sum(tmp$freq),
+    names=names(bcol)[match(tmp$hex, paste0(bcol, "ff"))])
+  out <- numeric(length(bcol))
+  names(out) <- names(bcol)
+  out[names(p)] <- p
+  out
+}
+est_full <- t(pbapply::pbsapply(file.path("images", bi), pcolor_full))
+est_full <- data.frame(file=bi, est_full)
+if (interactive())
+  write.csv(est, row.names=FALSE, file="color-estimates-full.csv")
+#'
 #' We are resizing to 261 x 200
 pcolor <- function(f, size="300x200") {
   tmp <- image_read(f) %>%
