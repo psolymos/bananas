@@ -1,4 +1,4 @@
-url: https://hub.analythium.io/deps
+url: https://peter.solymos.org/bananas
 
 home:
   title: "bananas: Data set of ripening bananas"
@@ -6,6 +6,7 @@ home:
     Color information about ripening bananas over 21 days.
 template:
   bootstrap: 5
+  bootswatch: cosmo
   includes:
     in_header: |
       <script src="https://cdn.usefathom.com/script.js" data-site="KTMJHUPR" defer></script>
