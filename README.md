@@ -14,18 +14,18 @@ remotes::install_github("psolymos/bananas")
 
 A sequence of images were taken of 11 banana fruits over 21 days:
 
-![](26_B.gif)
+![](https://github.com/psolymos/bananas/raw/master/26_B.gif)
 
 After masking, pixels were classified according to this color palette:
 
-![](palette.png)
+![](https://github.com/psolymos/bananas/raw/master/palette.png)
 
 Color changes over time:
 
-![](colors.png)
+![](https://github.com/psolymos/bananas/raw/master/colors.png)
 
 Change in visible surface are (volume) over time:
 
-![](volume.png)
+![](https://github.com/psolymos/bananas/raw/master/volume.png)
 
 [MIT License](./LICENSE) © 2022 Peter Solymos
