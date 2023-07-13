@@ -7,7 +7,7 @@
 \alias{banana_colors}
 \title{Data Set of Ripening Bananas}
 \format{
-A data frame with 220 rows and 19 columns for `bananas`. A character vector with 10 values for `banana_colors`.
+A data frame with 220 rows and 19 columns for \code{bananas}. A character vector with 10 values for \code{banana_colors}.
 
 An object of class \code{data.frame} with 220 rows and 8 columns.
 
@@ -23,31 +23,53 @@ Color information about ripening bananas over 21 days.
 }
 \details{
 The data set contains these columns:
-`fruit`: fruit ID (first digit refers to the bunch, second digit that individual fruit);
-`ripeness`: ripeness class (under ripe , ripe, very ripe, over ripe;
-`ripe`: 0/1 indicator (`ripeness == "ripe"`);
-`treatment`: Fridge or basement Room temperature, fruits were randomly assigned;
-`day`: days since the start of the study;
-`green`: proportion of pixels classified as green relative to the visible surface area;
-`yellow`: proportion of pixels classified as yellow relative to the visible surface area;
-`brown`: proportion of pixels classified as brown relative to the visible surface area.
+\itemize{
+\item \code{fruit}: fruit ID (first digit refers to the bunch, second digit that individual fruit);
+\item \code{ripeness}: ripeness class (under ripe , ripe, very ripe, over ripe;
+\item \code{ripe}: 0/1 indicator (\code{ripeness == "ripe"});
+\item \code{treatment}: Fridge or basement Room temperature, fruits were randomly assigned;
+\item \code{day}: days since the start of the study;
+\item \code{green}: proportion of pixels classified as green relative to the visible surface area;
+\item \code{yellow}: proportion of pixels classified as yellow relative to the visible surface area;
+\item \code{brown}: proportion of pixels classified as brown relative to the visible surface area.
+}
 
 The vector has the following colors:
-`w`: white (`"#ffffff"`);
-`g1`: dark green (`"#576a26"`);
-`g2`: green (`"#919e39"`);
-`yg`: yellow-green (`"#b1ab3e"`);
-`y1`: yellow (`"#d6c350"`);
-`y2`: light yellow (`"#eece5a"`);
-`yb`: yellow-brown (`"#d1a123"`);
-`b1`: light brown (`"#966521"`);
-`b2`: brown (`"#5c361f"`);
-`b3`: dark brown (`"#261d19"`).
+\itemize{
+\item \code{w}: white (\code{"#ffffff"});
+\item \code{g1}: dark green (\code{"#576a26"});
+\item \code{g2}: green (\code{"#919e39"});
+\item \code{yg}: yellow-green (\code{"#b1ab3e"});
+\item \code{y1}: yellow (\code{"#d6c350"});
+\item \code{y2}: light yellow (\code{"#eece5a"});
+\item \code{yb}: yellow-brown (\code{"#d1a123"});
+\item \code{b1}: light brown (\code{"#966521"});
+\item \code{b2}: brown (\code{"#5c361f"});
+\item \code{b3}: dark brown (\code{"#261d19"}).
+}
 }
 \examples{
+head(bananas)
 str(bananas)
 summary(bananas)
 
-str(banana_colors)
+banana_colors
+
+x <- bananas[bananas$treatment == "Room",]
+
+plot(x = jitter(x$day, 0.5), y = x$green,
+    col = banana_colors["g1"], pch = 19,
+    xlab = "Days", ylab = "Proportion", ylim = c(0, 1))
+points(x = jitter(x$day, 0.5), y = x$yellow,
+    col = banana_colors["y2"], pch = 19)
+points(x = jitter(x$day, 0.5), y = x$brown,
+    col = banana_colors["b2"], pch = 19)
+lines(lowess(x = x$day, y = x$green, f = 0.3), 
+    col = banana_colors["g1"], lwd = 3)
+lines(lowess(x = x$day, y = x$yellow, f = 0.3), 
+    col = banana_colors["y2"], lwd = 3)
+lines(lowess(x = x$day, y = x$brown, f = 0.3), 
+    col = banana_colors["b2"], lwd = 3)
+
 }
 \keyword{datasets}
