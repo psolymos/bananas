@@ -61,37 +61,43 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A data frame with 220 rows and 19 columns for `bananas`. A character vector with 10 values for `banana_colors`.</p>
+    <p>A data frame with 220 rows and 19 columns for <code>bananas</code>. A character vector with 10 values for <code>banana_colors</code>.</p>
 <p>An object of class <code>data.frame</code> with 220 rows and 8 columns.</p>
 <p>An object of class <code>character</code> of length 10.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The data set contains these columns:
-`fruit`: fruit ID (first digit refers to the bunch, second digit that individual fruit);
-`ripeness`: ripeness class (under ripe , ripe, very ripe, over ripe;
-`ripe`: 0/1 indicator (`ripeness == "ripe"`);
-`treatment`: Fridge or basement Room temperature, fruits were randomly assigned;
-`day`: days since the start of the study;
-`green`: proportion of pixels classified as green relative to the visible surface area;
-`yellow`: proportion of pixels classified as yellow relative to the visible surface area;
-`brown`: proportion of pixels classified as brown relative to the visible surface area.</p>
-<p>The vector has the following colors:
-`w`: white (`"#ffffff"`);
-`g1`: dark green (`"#576a26"`);
-`g2`: green (`"#919e39"`);
-`yg`: yellow-green (`"#b1ab3e"`);
-`y1`: yellow (`"#d6c350"`);
-`y2`: light yellow (`"#eece5a"`);
-`yb`: yellow-brown (`"#d1a123"`);
-`b1`: light brown (`"#966521"`);
-`b2`: brown (`"#5c361f"`);
-`b3`: dark brown (`"#261d19"`).</p>
-    </div>
+    <p>The data set contains these columns:</p><ul><li><p><code>fruit</code>: fruit ID (first digit refers to the bunch, second digit that individual fruit);</p></li>
+<li><p><code>ripeness</code>: ripeness class (under ripe , ripe, very ripe, over ripe;</p></li>
+<li><p><code>ripe</code>: 0/1 indicator (<code>ripeness == "ripe"</code>);</p></li>
+<li><p><code>treatment</code>: Fridge or basement Room temperature, fruits were randomly assigned;</p></li>
+<li><p><code>day</code>: days since the start of the study;</p></li>
+<li><p><code>green</code>: proportion of pixels classified as green relative to the visible surface area;</p></li>
+<li><p><code>yellow</code>: proportion of pixels classified as yellow relative to the visible surface area;</p></li>
+<li><p><code>brown</code>: proportion of pixels classified as brown relative to the visible surface area.</p></li>
+</ul><p>The vector has the following colors:</p><ul><li><p><code>w</code>: white (<code>"#ffffff"</code>);</p></li>
+<li><p><code>g1</code>: dark green (<code>"#576a26"</code>);</p></li>
+<li><p><code>g2</code>: green (<code>"#919e39"</code>);</p></li>
+<li><p><code>yg</code>: yellow-green (<code>"#b1ab3e"</code>);</p></li>
+<li><p><code>y1</code>: yellow (<code>"#d6c350"</code>);</p></li>
+<li><p><code>y2</code>: light yellow (<code>"#eece5a"</code>);</p></li>
+<li><p><code>yb</code>: yellow-brown (<code>"#d1a123"</code>);</p></li>
+<li><p><code>b1</code>: light brown (<code>"#966521"</code>);</p></li>
+<li><p><code>b2</code>: brown (<code>"#5c361f"</code>);</p></li>
+<li><p><code>b3</code>: dark brown (<code>"#261d19"</code>).</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bananas</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bananas</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      fruit ripeness ripe treatment day     green    yellow       brown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 fruit_11    Under    0    Fridge   0 0.3796618 0.5988353 0.021502968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 fruit_11    Under    0    Fridge   1 0.3351661 0.6576977 0.007136172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 fruit_11     Ripe    1    Fridge   2 0.3057067 0.6522746 0.042018752</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 fruit_11     Ripe    1    Fridge   4 0.3986194 0.5279045 0.073476073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 fruit_11     Ripe    1    Fridge   5 0.3220496 0.4889868 0.188963598</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 fruit_11     Ripe    1    Fridge   6 0.4015645 0.4320256 0.166409861</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bananas</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	220 obs. of  8 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ fruit    : chr  "fruit_11" "fruit_11" "fruit_11" "fruit_11" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ ripeness : Factor w/ 4 levels "Under","Ripe",..: 1 1 2 2 2 2 3 3 3 3 ...</span>
@@ -117,9 +123,29 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:0.25731   3rd Qu.:0.62927   3rd Qu.:0.829551  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :0.83695   Max.   :0.92442   Max.   :0.946589  </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">banana_colors</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Named chr [1:10] "#ffffff" "#576a26" "#919e39" "#b1ab3e" "#d6c350" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "names")= chr [1:10] "w" "g1" "g2" "yg" ...</span>
+<span class="r-in"><span><span class="va">banana_colors</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         w        g1        g2        yg        y1        y2        yb        b1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "#ffffff" "#576a26" "#919e39" "#b1ab3e" "#d6c350" "#eece5a" "#d1a123" "#966521" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b2        b3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "#5c361f" "#261d19" </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">bananas</span><span class="op">[</span><span class="va">bananas</span><span class="op">$</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Room"</span>,<span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">day</span>, <span class="fl">0.5</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">green</span>,</span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"g1"</span><span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span>,</span></span>
+<span class="r-in"><span>    xlab <span class="op">=</span> <span class="st">"Days"</span>, ylab <span class="op">=</span> <span class="st">"Proportion"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">day</span>, <span class="fl">0.5</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">yellow</span>,</span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"y2"</span><span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">day</span>, <span class="fl">0.5</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">brown</span>,</span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"b2"</span><span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lowess.html" class="external-link">lowess</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">day</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">green</span>, f <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"g1"</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lowess.html" class="external-link">lowess</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">day</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">yellow</span>, f <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"y2"</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lowess.html" class="external-link">lowess</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">day</span>, y <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">brown</span>, f <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    col <span class="op">=</span> <span class="va">banana_colors</span><span class="op">[</span><span class="st">"b2"</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="banas-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
