@@ -52,13 +52,13 @@
 #'
 #' @docType package
 #' @name bananas
-#' @rdname banas
+#' @rdname bananas
 #' @aliases bananas bananas-package
 NULL
 
-#' @rdname banas
+#' @rdname bananas
 "bananas"
 
 
-#' @rdname banas
+#' @rdname bananas
 "banana_colors"
